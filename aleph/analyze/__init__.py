@@ -41,15 +41,18 @@ def analyze_document(document):
     log.info("Analyze document: %r", document)
     analyzers = []
     meta = document.meta
+    log.debug("Loading analyzers")
     for cls in get_analyzers():
         analyzer = cls(document, meta)
         analyzer.prepare()
         analyzers.append(analyzer)
 
-    for text in document.text_parts():
+    for i, text in enumerate(document.text_parts()):
         for analyzer in analyzers:
+            log.debug("Applying %r on text part %d", analyzer, i)
             analyzer.on_text(text)
 
+    log.debug("Finalizing analyzers")
     for analyzer in analyzers:
         analyzer.finalize()
     document.meta = meta

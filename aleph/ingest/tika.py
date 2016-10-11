@@ -1,7 +1,10 @@
 from aleph.core import get_config
 from bs4 import BeautifulSoup
 from urlparse import urljoin
+import logging
 import requests
+
+log = logging.getLogger(__name__)
 
 
 def extract_pdf(path, languages=None):
@@ -12,6 +15,8 @@ def extract_pdf(path, languages=None):
         r.raise_for_status()
         soup = BeautifulSoup(r.text.encode('utf8', 'replace'), 'html.parser')
         pages = []
-        for i, page in enumerate(soup.findAll('div', class_='page')):
-            pages.append(page.get_text())
+        for page_no, page in enumerate(soup.findAll('div', class_='page')):
+            text = page.get_text()
+            log.debug("Extracted %d characters of text from %r, p.%s", len(text), path, page_no)
+            pages.append(text)
         return {'pages': pages}
