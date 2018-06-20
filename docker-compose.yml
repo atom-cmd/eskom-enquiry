@@ -1,14 +1,14 @@
 version: "2"
 
 services:
-  postgres:
-    image: postgres:10.0
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER:     aleph
-      POSTGRES_PASSWORD: aleph
-      POSTGRES_DATABASE: aleph
+#   postgres:
+#     image: postgres:10.0
+#     volumes:
+#       - postgres-data:/var/lib/postgresql/data
+#     environment:
+#       POSTGRES_USER:     aleph
+#       POSTGRES_PASSWORD: aleph
+#       POSTGRES_DATABASE: aleph
 
   elasticsearch:
     image: alephdata/platform-elasticsearch:2.1.4
@@ -38,7 +38,7 @@ services:
     mem_limit: 2g
     expose:
       - 50000
-  
+
   extract-spacy:
     build: services/extract-spacy
     restart: on-failure
@@ -51,7 +51,6 @@ services:
     command: celery -A aleph.queues -B -c 4 -l INFO worker
     restart: on-failure
     links:
-      - postgres
       - elasticsearch
       - rabbitmq
       - convert-document
@@ -64,12 +63,11 @@ services:
       - "/:/host"
     env_file:
       - aleph.env
-  
+
   shell:
     build: .
     command: /bin/bash
     links:
-      - postgres
       - elasticsearch
       - rabbitmq
       - convert-document
@@ -89,7 +87,6 @@ services:
     build: .
     command: celery -A aleph.queues beat -s /var/lib/celerybeat-schedule.db
     links:
-      - postgres
       - elasticsearch
       - rabbitmq
       - worker
@@ -109,7 +106,6 @@ services:
     expose:
       - 8000
     links:
-      - postgres
       - elasticsearch
       - rabbitmq
       - worker
@@ -142,7 +138,6 @@ services:
 volumes:
   assets: {}
   archive-data: {}
-  postgres-data: {}
   rabbitmq-data: {}
   elasticsearch-data: {}
   elasticsearch-log: {}
