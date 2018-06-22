@@ -105,6 +105,8 @@ services:
     command: gunicorn -w 8 -b 0.0.0.0:8000 --log-level info --log-file /var/log/gunicorn.log aleph.manage:app
     expose:
       - 8000
+    ports:
+      - 8000:8000
     links:
       - elasticsearch
       - rabbitmq
