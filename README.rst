@@ -1,3 +1,37 @@
+Eskom-Inquiry
+=============
+
+Production setup
+----------------
+
+
+Backend services
+~~~~~~~~~~~~~~~~
+
+Backend services are hosted on eskom-admin.openup.org.za. This repository
+is checked out in /home/ubuntu/aleph and run with `docker-compose up -d`.
+
+nginx is configured to forward eskom-aleph-api.openup.org.za to localhost:8000
+where the api container is listening.
+
+HTTPS is provided by nginx. The certificate is provisioned using certbot.
+
+
+Frontend
+~~~~~~~~
+
+The UI is hosted on netlify. `netlify.toml` defines the build config.
+Additionally the following build environment variable must be defined:
+
+    REACT_APP_API_ENDPOINT=https://eskom-aleph-api.openup.org.za/api/2
+
+HTTPS is provided by netlify. The certificate is provisioned using letsencrypt on netlify.
+
+Netlify should be configured to build when changes are pushed to the github repository.
+See `netlify-setup.md` for more on how to set this up.
+
+-----
+
 .. epigraph::
 
   Truth cannot penetrate a closed mind. If all places in the universe are in
@@ -48,4 +82,3 @@ OpenOil. For coordination, the following mailing list exists:
 If you find any errors or issues using Aleph please
 `file an issue on GitHub <https://github.com/alephdata/aleph/issues/new>`_ or
 contact the mailing list.
-
