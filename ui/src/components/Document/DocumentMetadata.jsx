@@ -44,14 +44,6 @@ class DocumentMetadata extends Component {
             </span>
           </li>
         )}
-        {document.author && (
-          <li>
-            <span className="key">
-              <FormattedMessage id="document.author" defaultMessage="Author"/>
-            </span>
-            <span className="value">{document.author}</span>
-          </li>
-        )}
         {document.generator && (
           <li>
             <span className="key">
