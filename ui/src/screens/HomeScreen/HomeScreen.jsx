@@ -55,7 +55,7 @@ class HomeScreen extends Component {
   render() {
     const { intl, metadata, statistics } = this.props;
     const samples = metadata.app.samples.join(', ');
-    
+
     return (
       <Screen isHomepage={true} title={intl.formatMessage(messages.title)}>
         <section className='HomePage'>
@@ -65,8 +65,8 @@ class HomeScreen extends Component {
               <FormattedMessage id='home.summary'
                                 defaultMessage="Search {total} public records and leaks from {collections} sources"
                                 values={{
-                                  total: numeral(statistics.entities).format('0a'),
-                                  collections: <FormattedNumber value={statistics.collections} />
+                                  total: statistics.entities ? numeral(statistics.entities).format('0a') : "",
+                                  collections: statistics.collections ? <FormattedNumber value={statistics.collections} /> : "many"
                                 }} />
               </div>
               <form onSubmit={this.onSubmit} className="search-form">
