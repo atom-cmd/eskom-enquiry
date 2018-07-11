@@ -24,10 +24,6 @@ const messages = defineMessages({
     id: 'search.facets.facet.collection_id',
     defaultMessage: 'Sources',
   },
-  facet_languages: {
-    id: 'search.facets.facet.languages',
-    defaultMessage: 'Languages',
-  },
   facet_emails: {
     id: 'search.facets.facet.emails',
     defaultMessage: 'E-Mails',
@@ -47,14 +43,6 @@ const messages = defineMessages({
   facet_addresses: {
     id: 'search.facets.facet.addresses',
     defaultMessage: 'Addresses',
-  },
-  facet_mime_type: {
-    id: 'search.facets.facet.mime_type',
-    defaultMessage: 'File types',
-  },
-  facet_author: {
-    id: 'search.facets.facet.author',
-    defaultMessage: 'Authors',
   },
   no_results_title: {
     id: 'search.no_results_title',
@@ -93,11 +81,6 @@ class SearchScreen extends React.Component {
         icon: 'globe'
       },
       {
-        field: 'languages',
-        label: intl.formatMessage(messages.facet_languages),
-        icon: 'translate'
-      },
-      {
         field: 'emails',
         label: intl.formatMessage(messages.facet_emails),
         icon: 'envelope'
@@ -117,16 +100,6 @@ class SearchScreen extends React.Component {
         label: intl.formatMessage(messages.facet_addresses),
         icon: 'map'
       },
-      {
-        field: 'mime_type',
-        label: intl.formatMessage(messages.facet_mime_type),
-        icon: 'document'
-      },
-      {
-        field: 'author',
-        label: intl.formatMessage(messages.facet_author),
-        icon: 'person'
-      }
     ];
     this.state = {facets: facets};
 
