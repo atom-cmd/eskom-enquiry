@@ -34,15 +34,6 @@ class CollectionListItem extends Component {
             <Category collection={collection} />
           </span>
 
-          <span className="details-item">
-            <Icon icon="time" />
-            <FormattedMessage id="collection.last_updated"
-                              defaultMessage="Updated {date}"
-                              values={{
-                                date: <Date value={collection.updated_at} />
-                              }}/>
-          </span>
-          
           { collection.countries.length > 0 && (
             <span className="details-item">
               <Icon icon="globe" />
