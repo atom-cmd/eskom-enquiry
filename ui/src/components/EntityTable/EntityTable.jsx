@@ -22,17 +22,9 @@ const messages = defineMessages({
     id: 'entity.column.schema',
     defaultMessage: 'Type',
   },
-  column_countries: {
-    id: 'entity.column.countries',
-    defaultMessage: 'Countries',
-  },
   column_file_size: {
     id: 'entity.column.file_size',
     defaultMessage: 'Size',
-  },
-  column_dates: {
-    id: 'entity.column.dates',
-    defaultMessage: 'Date',
   },
 });
 
@@ -96,17 +88,9 @@ class EntityTable extends Component {
         <thead>
           <tr>
             <TH field="name" className="wide" sortable={true} />
-            {!hideCollection && 
+            {!hideCollection &&
               <TH field="collection_id" />
             }
-            <TH field="schema" />
-            {!documentMode && (
-              <TH field="countries" sortable={true} />
-            )}
-            <TH field="dates" sortable={true} />
-            {documentMode && (
-              <TH field="file_size" sortable={true} />
-            )}
           </tr>
         </thead>
         <tbody className={c({'updating': isLoading})}>

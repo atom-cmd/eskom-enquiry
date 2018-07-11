@@ -9,7 +9,7 @@ class EntityTableRow extends Component {
     const { entity, className, location: loc } = this.props;
     const { hideCollection, documentMode } = this.props;
     const parsedHash = queryString.parse(loc.hash);
-    
+
     let rowClassName = (className) ? `${className} nowrap` : 'nowrap';
 
     // Select the current row if the ID of the entity matches the ID of the
@@ -19,13 +19,13 @@ class EntityTableRow extends Component {
     if (parsedHash['preview:id'] && parsedHash['preview:id'] === entity.id) {
       rowClassName += ' active'
     }
-    
+
     return (
       <tr className={rowClassName}>
         <td className="entity">
           <Entity.Link preview={!documentMode} entity={entity} icon />
         </td>
-        {!hideCollection && 
+        {!hideCollection &&
           <td className="collection">
             <Collection.Link preview={true} collection={entity.collection} icon />
           </td>
@@ -33,19 +33,6 @@ class EntityTableRow extends Component {
         <td className="schema">
           <Schema.Label schema={entity.schema} />
         </td>
-        {!documentMode && (
-          <td className="country">
-            <Country.List codes={entity.countries} />
-          </td>
-        )}
-        <td className="date">
-          <Date.Earliest values={entity.dates} />
-        </td>
-        {documentMode && (
-          <td className="file-size">
-            <FileSize value={entity.file_size}/>
-          </td>
-        )}
       </tr>
     );
   }
