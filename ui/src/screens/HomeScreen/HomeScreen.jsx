@@ -13,7 +13,7 @@ import './HomeScreen.css';
 const messages = defineMessages({
   title: {
     id: 'home.title',
-    defaultMessage: 'Find public records and leaks',
+    defaultMessage: 'Find public records',
   },
   search_placeholder: {
     id: 'home.search_placeholder',
@@ -63,7 +63,7 @@ class HomeScreen extends Component {
             <div className='inner-searchbox'>
               <div className='homepage-summary'>
               <FormattedMessage id='home.summary'
-                                defaultMessage="Search {total} public records and leaks from {collections} sources"
+                                defaultMessage="Search {total} public records"
                                 values={{
                                   total: statistics.entities ? numeral(statistics.entities).format('0a') : "",
                                   collections: statistics.collections ? <FormattedNumber value={statistics.collections} /> : "many"
@@ -91,6 +91,9 @@ class HomeScreen extends Component {
                   />
                 </ControlGroup>
               </form>
+              <div className="homepage-blurb-container">
+                <div className="homepage-blurb">The South African Parliament's Portfolio Committee on Public Enterprises conducted an inquiry into allegations of State Capture at the state-owned electricity Eskom between October 2017 and March 2018. This is an archive of the evidence heard by and submitted to the Committee in support of their mission.</div>
+              </div>
             </div>
           </div>
         </section>
