@@ -30,7 +30,6 @@ class Screen extends React.Component {
       <div className={c("Screen", className)}>
         <Helmet titleTemplate={`%s - ${metadata.app.title}`}>
           <title>{this.props.title || metadata.app.title}</title>
-          <link rel="shortcut icon" href={metadata.app.favicon} />
         </Helmet>
 
         <Navbar metadata={metadata}
@@ -42,7 +41,7 @@ class Screen extends React.Component {
         <main className={mainClass}>
           {this.props.children}
         </main>
-          
+
         <Preview/>
 
         <Footer isHomepage={isHomepage}
