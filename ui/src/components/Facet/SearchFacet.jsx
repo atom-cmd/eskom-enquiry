@@ -48,7 +48,7 @@ class SearchFacet extends Component {
       newQuery = newQuery.remove('facet', field);
       newQuery = newQuery.add('facet_total:' + field, undefined);
       newQuery = newQuery.set('facet_size:' + field, undefined);
-    } else { 
+    } else {
       newQuery = newQuery.add('facet', field);
       newQuery = newQuery.add('facet_total:' + field, true);
     }
@@ -79,7 +79,7 @@ class SearchFacet extends Component {
   }
 
   render() {
-    const { query, facetSize, isOpen, result, field, label, icon, intl } = this.props;
+    const { query, facetSize, isOpen, result, field, label, icon, intl, stronger } = this.props;
     const { facet, isExpanding } = this.state;
     const current = query.getFilter(field);
     const count = current ? current.length : 0;
@@ -91,11 +91,11 @@ class SearchFacet extends Component {
       <div className="SearchFacet">
         <div className={c('opener clickable', { active: !isUpdating && isFiltered })} onClick={this.onToggleOpen} style={{position: 'relative'}}>
           <Icon icon={`caret-right`} className={c('caret', {rotate: isOpen})} />
-          <span className="FacetName">
-            <span className={`FacetIcon pt-icon pt-icon-${icon}`}/>  
-            {label} 
+          <span className={`FacetName ${stronger && "FacetName-stronger"}`} >
+            <span className={`FacetIcon pt-icon pt-icon-${icon}`}/>
+            {label}
           </span>
-            
+
           {isFiltered && (
             <React.Fragment>
               <span className="FilterCount pt-text-muted">
@@ -115,14 +115,14 @@ class SearchFacet extends Component {
               {facet.total === 0 && (
                 <span className="pt-tag pt-small pt-round pt-minimal">0</span>
               )}
-              
+
               {facet.total > 0 && (
                 <span className="pt-tag pt-small pt-round pt-intent-primary">
                   <FormattedNumber value={facet.total} />
                 </span>
               )}
             </React.Fragment>
-          )} 
+          )}
         </div>
           <Collapse isOpen={isOpen} className={c({updating: isUpdating})}>
           {facet.values !== undefined && (

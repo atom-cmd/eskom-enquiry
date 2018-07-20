@@ -19,6 +19,7 @@ class SearchFacets extends Component {
               label={facet.label}
               icon={facet.icon}
               defaultSize={facet.defaultSize}
+              stronger={facet.stronger}
             />
           </li>
         ))}

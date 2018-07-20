@@ -9,7 +9,6 @@ import { ControlGroup, InputGroup } from "@blueprintjs/core";
 
 import SearchAlert from 'src/components/SearchAlert/SearchAlert';
 import AuthButtons from 'src/components/AuthButtons/AuthButtons';
-import LanguageMenu from 'src/components/LanguageMenu/LanguageMenu';
 
 import './Navbar.css';
 
@@ -64,11 +63,6 @@ class Navbar extends React.Component {
         <nav className="pt-navbar">
           <div className="pt-navbar-group pt-align-left">
             <div className="pt-navbar-heading">
-              <Link to="/">
-                <img src={metadata.app.logo} alt={metadata.app.title}/>
-              </Link>
-            </div>
-            <div className="pt-navbar-heading">
               <Link to="/">{metadata.app.title}</Link>
             </div>
             {/*
@@ -98,7 +92,6 @@ class Navbar extends React.Component {
             </Link>
             <div className="pt-navbar-divider"/>
             <AuthButtons session={session} auth={metadata.auth}/>
-            <LanguageMenu/>
           </div>
         </nav>
       </div>
