@@ -1,8 +1,14 @@
 @import "src/app/variables.scss";
 
 .EntityTable {
+  .collection {
+      width: 25%;
+  }
+  .entity {
+      width: 55%;
+  }
   .schema {
-    max-width: 0em;
+      width: 10%;
   }
 
   .updating {
