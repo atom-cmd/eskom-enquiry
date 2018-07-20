@@ -67,13 +67,15 @@ class SearchScreen extends React.Component {
       {
         field: 'collection_id',
         label: intl.formatMessage(messages.facet_collection_id),
-        icon: 'database'
+        icon: 'database',
+        stronger: true
       },
       {
         field: 'schema',
         label: intl.formatMessage(messages.facet_schema),
         icon: 'list',
-        defaultSize: 20
+        defaultSize: 20,
+        stronger: true
       },
       {
         field: 'countries',
