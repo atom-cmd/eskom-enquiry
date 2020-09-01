@@ -1,4 +1,4 @@
-Eskom-Inquiry
+Eskomo-Inquiry
 =============
 
 Production setup
@@ -9,7 +9,7 @@ Backend services
 ~~~~~~~~~~~~~~~~
 
 Backend services are hosted on eskom-admin.openup.org.za. This repository
-is checked out in /home/ubuntu/aleph and run with `docker-compose up -d`.
+is checked out in /home/ubuntu/eskomo and run with `docker-compose up -d`.
 
 nginx is configured to forward eskom-aleph-api.openup.org.za to localhost:8000
 where the api container is listening.
