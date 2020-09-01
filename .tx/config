@@ -1,14 +1,14 @@
 [main]
 host = https://www.transifex.com
 
-[aleph-api.messages-pot]
-file_filter = aleph/translations/<lang>/LC_MESSAGES/aleph.po
+[eskomo-api.messages-pot]
+file_filter = eskomo/translations/<lang>/LC_MESSAGES/eskomo.po
 minimum_perc = 0
-source_file = aleph/translations/messages.pot
+source_file = eskomo/translations/messages.pot
 source_lang = en
 type = PO
 
-[aleph-ui.messages-pot]
+[eskomo-ui.messages-pot]
 file_filter = ui/i18n/translations/<lang>.po
 minimum_perc = 0
 source_file = ui/i18n/messages.pot
